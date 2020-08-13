@@ -40,10 +40,12 @@ namespace ETModel
 				//
 
 				//测试发送给服务端一条文本消息
-				Session session = Game.Scene.GetComponent<NetOuterComponent>().Create(GlobalConfigComponent.Instance.GlobalProto.Address);
-                G2C_TestMessage g2CTestMessage = (G2C_TestMessage) await session.Call(new C2G_TestMessage() { Info = "==>>服务端的朋友,你好!收到请回答" });
+				//Session session = Game.Scene.GetComponent<NetOuterComponent>().Create(GlobalConfigComponent.Instance.GlobalProto.Address);
+                //G2C_TestMessage g2CTestMessage = (G2C_TestMessage) await session.Call(new C2G_TestMessage() { Info = "==>>服务端的朋友,你好!收到请回答" });
 
-				
+				Game.Scene.AddComponent<OpcodeTestComponent>();
+
+				Game.EventSystem.Load();
 			}
 			catch (Exception e)
 			{
