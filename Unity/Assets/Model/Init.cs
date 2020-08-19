@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading;
 using UnityEngine;
 
@@ -43,7 +44,15 @@ namespace ETModel
 				//Session session = Game.Scene.GetComponent<NetOuterComponent>().Create(GlobalConfigComponent.Instance.GlobalProto.Address);
                 //G2C_TestMessage g2CTestMessage = (G2C_TestMessage) await session.Call(new C2G_TestMessage() { Info = "==>>服务端的朋友,你好!收到请回答" });
 
-				Game.Scene.AddComponent<OpcodeTestComponent>();
+				//Game.Scene.AddComponent<OpcodeTestComponent>();
+
+				Game.Scene.AddComponent<TimerComponent>();
+				//Game.Scene.AddComponent<FrameTestComponent>();
+
+				TestRoom room = ComponentFactory.Create<TestRoom>();
+				room.AddComponent<TimeTestComponent>();
+				room.GetComponent<TimeTestComponent>().Run(Typebehavior.Waiting, 5000);
+				room.GetComponent<TimeTestComponent>().Run(Typebehavior.RandTarget);
 
 				Game.EventSystem.Load();
 			}
